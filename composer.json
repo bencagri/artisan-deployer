@@ -1,0 +1,45 @@
+{
+    "name": "bencagri/artisan-deployer",
+    "type": "laravel-package",
+    "description": "The easiest way to deploy Laravel applications",
+    "keywords": ["deploy", "deployment", "deployer","laravel","artisan"],
+    "homepage": "https://github.com/bencagri/artisan-deployer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bencagri",
+            "email": "hi@bencagri.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "illuminate/support": "^5.5",
+        "symfony/expression-language": "~2.4|~3.0|~4.0",
+        "symfony/filesystem": "~2.3|~3.0|~4.0",
+        "symfony/http-foundation": "~2.3|~3.0|~4.0",
+        "symfony/polyfill-mbstring": "^1.3",
+        "symfony/process": "~2.3|~3.0|~4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": { "Bencagri\\Artisan\\Deployer\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Bencagri\\Artisan\\Deployer\\Tests\\": "tests/" }
+    },
+    "extra": {
+        "laravel" : {
+            "providers" : [
+                "Bencagri\\Artisan\\Deployer\\ArtisanDeployerProvider"
+            ]
+        },
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
