@@ -5,6 +5,12 @@ Artisan Deployer
 <img src="https://raw.githubusercontent.com/bencagri/artisan-deployer/master/docs/images/artisan-deployer.gif">
 </p>
 
+
+[![Build Status](https://travis-ci.org/bencagri/artisan-deployer.svg?branch=master)](https://travis-ci.org/bencagri/artisan-deployer)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bencagri/artisan-deployer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bencagri/artisan-deployer/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/bencagri/artisan-deployer/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
+
 **Artisan Deployer is the easiest way to deploy your Laravel applications.**
 
 ### Features
