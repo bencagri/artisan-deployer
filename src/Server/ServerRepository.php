@@ -29,7 +29,7 @@ class ServerRepository
      */
     public function findByRoles(array $roles) : array
     {
-        return array_filter($this->servers, function (Server $server) use ($roles) {
+        return array_filter($this->servers, function(Server $server) use ($roles) {
             return !empty(array_intersect($roles, $server->getRoles()));
         });
     }

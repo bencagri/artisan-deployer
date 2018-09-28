@@ -29,8 +29,8 @@ class Str
     {
         $text = is_array($text) ? $text : explode(PHP_EOL, $text);
 
-        return implode(PHP_EOL, array_map(function ($line) use ($prefix) {
-            return $prefix.$line;
+        return implode(PHP_EOL, array_map(function($line) use ($prefix) {
+            return $prefix . $line;
         }, $text));
     }
 
@@ -52,7 +52,7 @@ class Str
             return json_encode($value, JSON_UNESCAPED_SLASHES);
         }
 
-        return (string) $value;
+        return (string)$value;
     }
 
     public static function formatAsTable(array $data, bool $sortKeys = true) : string

@@ -237,8 +237,8 @@ final class DefaultConfiguration extends AbstractConfiguration
     // the $paths can be glob() patterns, so this method needs to resolve them
     public function controllersToRemove(array $paths) : self
     {
-        $absoluteGlobPaths = array_map(function ($globPath) {
-            return $this->localProjectDir.DIRECTORY_SEPARATOR.$globPath;
+        $absoluteGlobPaths = array_map(function($globPath) {
+            return $this->localProjectDir . DIRECTORY_SEPARATOR . $globPath;
         }, $paths);
 
         $localAbsolutePaths = [];
@@ -246,7 +246,7 @@ final class DefaultConfiguration extends AbstractConfiguration
             $localAbsolutePaths = array_merge($localAbsolutePaths, glob($path));
         }
 
-        $localRelativePaths = array_map(function ($absolutePath) {
+        $localRelativePaths = array_map(function($absolutePath) {
             $relativePath = str_replace($this->localProjectDir, '', $absolutePath);
             $this->validatePathIsRelativeToProject($relativePath, 'controllersToRemove');
 
@@ -309,7 +309,7 @@ final class DefaultConfiguration extends AbstractConfiguration
 
         foreach ($paths as $path) {
             $this->validatePathIsRelativeToProject($path, __METHOD__);
-            if (is_dir($this->localProjectDir.DIRECTORY_SEPARATOR.$path)) {
+            if (is_dir($this->localProjectDir . DIRECTORY_SEPARATOR . $path)) {
                 $this->sharedDirs[] = rtrim($path, DIRECTORY_SEPARATOR);
             } else {
                 $this->sharedFiles[] = $path;
@@ -356,7 +356,7 @@ final class DefaultConfiguration extends AbstractConfiguration
 
     private function validatePathIsRelativeToProject($path, $methodName) : void
     {
-        if (!is_readable($this->localProjectDir.DIRECTORY_SEPARATOR.$path)) {
+        if (!is_readable($this->localProjectDir . DIRECTORY_SEPARATOR . $path)) {
             throw new InvalidConfigurationException(sprintf('The "%s" value given in %s() is not relative to the project root directory or is not readable.', $path, $methodName));
         }
     }

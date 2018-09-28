@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 class ArtisanDeployerProvider extends ServiceProvider
 {
 
-    public function register(){
+    public function register() {
         $this->commands([
             DeployCommand::class,
             RollbackCommand::class
