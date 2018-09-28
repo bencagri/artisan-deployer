@@ -62,7 +62,7 @@ class TaskRunner
 
         $process->setTimeout(null);
 
-        $process = $process->mustRun(function ($type, $buffer) {
+        $process = $process->mustRun(function($type, $buffer) {
             if (Process::ERR === $type) {
                 $this->logger->log(Str::prefix(rtrim($buffer, PHP_EOL), '| <stream>err ::</> '));
             } else {

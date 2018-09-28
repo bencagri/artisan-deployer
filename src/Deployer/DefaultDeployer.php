@@ -274,7 +274,9 @@ abstract class DefaultDeployer extends AbstractDeployer
     private function doCreateSharedFiles() : void
     {
         $this->log('<h2>Creating symlinks for shared files</>');
-        if (!is_array($this->getConfig(Option::sharedFiles))) return;
+        if (!is_array($this->getConfig(Option::sharedFiles))) {
+            return;
+        }
 
         foreach ($this->getConfig(Option::sharedFiles) as $sharedFile) {
             $sharedFileParentDir = dirname($sharedFile);
@@ -346,7 +348,7 @@ abstract class DefaultDeployer extends AbstractDeployer
     {
         $this->log('<h2>Clearing controllers</>');
         foreach ($this->getServers()->findByRoles([Server::ROLE_APP]) as $server) {
-            $absolutePaths = array_map(function ($relativePath) use ($server) {
+            $absolutePaths = array_map(function($relativePath) use ($server) {
                 return $server->resolveProperties(sprintf('{{ project_dir }}/%s', $relativePath));
             }, $this->getConfig(Option::controllersToRemove));
 
@@ -408,7 +410,7 @@ abstract class DefaultDeployer extends AbstractDeployer
         }
 
         $relativeDirsToRemove = array_slice($releaseDirs, 0, -$this->getConfig(Option::keepReleases));
-        $absoluteDirsToRemove = array_map(function ($v) {
+        $absoluteDirsToRemove = array_map(function($v) {
             return sprintf('%s/releases/%s', $this->getConfig(Option::deployDir), $v);
         }, $relativeDirsToRemove);
 

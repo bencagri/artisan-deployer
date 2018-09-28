@@ -62,7 +62,7 @@ final class Logger
     private function writeToLogFile(string $message) : void
     {
         $loggedMessage = $this->processLogMessageForFile($message);
-        file_put_contents($this->logFilePath, $loggedMessage.PHP_EOL, FILE_APPEND);
+        file_put_contents($this->logFilePath, $loggedMessage . PHP_EOL, FILE_APPEND);
     }
 
     private function processLogMessageForFile(string $message) : string

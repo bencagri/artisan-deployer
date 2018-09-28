@@ -23,7 +23,7 @@ class Server
         $this->properties = new ParameterBag($properties);
 
         // add the 'ssh://' scheme so the URL parsing works as expected
-        $params = parse_url(Str::startsWith($dsn, 'ssh://') ? $dsn : 'ssh://'.$dsn);
+        $params = parse_url(Str::startsWith($dsn, 'ssh://') ? $dsn : 'ssh://' . $dsn);
 
         $this->user = $params['user'] ?? null;
 
@@ -37,7 +37,7 @@ class Server
 
     public function __toString() : string
     {
-        return sprintf('%s%s', $this->getUser() ? $this->getUser().'@' : '', $this->getHost());
+        return sprintf('%s%s', $this->getUser() ? $this->getUser() . '@' : '', $this->getHost());
     }
 
     public function isLocalHost() : bool
@@ -48,7 +48,7 @@ class Server
     public function resolveProperties(string $expression) : string
     {
         $definedProperties = $this->properties;
-        $resolved = preg_replace_callback('/(\{\{\s*(?<propertyName>.+)\s*\}\})/U', function (array $matches) use ($definedProperties, $expression) {
+        $resolved = preg_replace_callback('/(\{\{\s*(?<propertyName>.+)\s*\}\})/U', function(array $matches) use ($definedProperties, $expression) {
             $propertyName = trim($matches['propertyName']);
             if (!$definedProperties->has($propertyName)) {
                 throw new \InvalidArgumentException(sprintf('The "%s" property in "%s" expression is not a valid server property.', $propertyName, $expression));
@@ -89,8 +89,8 @@ class Server
         return sprintf('ssh %s%s%s%s',
             $this->properties->get('use_ssh_agent_forwarding') ? '-A ' : '',
             $this->user ?? '',
-            $this->user ? '@'.$this->host : $this->host,
-            $this->port ? ' -p '.$this->port : ''
+            $this->user ? '@' . $this->host : $this->host,
+            $this->port ? ' -p ' . $this->port : ''
         );
     }
 
